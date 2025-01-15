@@ -19,5 +19,13 @@ pipeline {
                 }
             }
         }
+         stage('Build') {
+            steps {
+                // Build Next.js project
+                nodejs(nodeJSInstallationName: 'NodeJS 21.1') {
+                    sh 'npm run build'
+                }
+            }
+        }
     }
 }
