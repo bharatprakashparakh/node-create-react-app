@@ -1,19 +1,22 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'nodejs-16.12'
+     tools {
+        nodejs 'NodeJS 21.1'
     }
     stages {
         stage('Checkout') {
-            steps {              
-              cleanWs()
-              echo "Checking out....."
-              checkout scm
-            }
-        }  
-        stage('Build App') {
             steps {
-                AppBuild()
+                cleanWs()  // Clean the workspace before checkout
+                echo "Checking out..."
+                checkout scm  // Checkout the code from the repository
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    echo "Installing dependencies..."
+                    sh 'npm install'  // Run npm install to install dependencies
+                }
             }
         }
     }
