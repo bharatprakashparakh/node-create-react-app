@@ -74,9 +74,7 @@ pipeline {
     tools {
         nodejs 'nodejs-16.12'  // Use the correct nodejs version installed in Jenkins
     }
-    environment {
-        NODE_OPTIONS = '--openssl-legacy-provider'  // Ensure compatibility with the build tools
-    }
+   
     stages {
         stage('Checkout') {
             steps {
